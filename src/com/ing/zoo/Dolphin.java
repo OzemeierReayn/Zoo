@@ -2,7 +2,7 @@ package com.ing.zoo;
 
 import java.util.Random;
 
-public class Dolphin implements Animal {
+public class Dolphin implements Animal, Carnivore, Tricks {
     public String name;
     public String helloText;
     public String eatText;

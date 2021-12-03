@@ -1,6 +1,6 @@
 package com.ing.zoo;
 
-public class Zebra implements Animal {
+public class Zebra implements Animal, Herbivore {
     public String name;
     public String helloText;
     public String eatText;

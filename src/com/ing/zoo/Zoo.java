@@ -9,6 +9,9 @@ public class Zoo {
 
     public static void main(String[] args) {
         List<Animal> listOfAnimals = new ArrayList<>();
+        List<Herbivore> listOfHerbivores = new ArrayList<>();
+        List<Carnivore> listOfCarnivores = new ArrayList<>();
+        List<Tricks> listOfAnimalTricks = new ArrayList<>();
 
         String[] commands = new String[4];
         commands[0] = "hello";
@@ -35,17 +38,35 @@ public class Zoo {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Voer uw command in: ");
 
-        //Arraylist for animals
+        //Arraylist for animals, herbivores, carnivores and animals that can perform tricks
         listOfAnimals.add(henk);
+        listOfCarnivores.add(henk);
+
         listOfAnimals.add(elsa);
+        listOfHerbivores.add(elsa);
+
         listOfAnimals.add(dora);
+        listOfHerbivores.add(dora);
+        listOfCarnivores.add(dora);
+        listOfAnimalTricks.add(dora);
+
         listOfAnimals.add(marty);
+        listOfHerbivores.add(marty);
+
         listOfAnimals.add(wally);
+        listOfCarnivores.add(wally);
 
         listOfAnimals.add(berta);
+        listOfCarnivores.add(berta);
+        listOfAnimalTricks.add(berta);
+
         listOfAnimals.add(jeffrey);
+        listOfHerbivores.add(jeffrey);
+        listOfCarnivores.add(jeffrey);
+        listOfAnimalTricks.add(jeffrey);
 
         String input = scanner.nextLine();
+
 
         if (input.equals(commands[0])) {        //Check for hello all animals
             listOfAnimals.forEach(Animal::sayHello);
@@ -65,24 +86,13 @@ public class Zoo {
             jeffrey.sayHello();
 
         } else if (input.equals(commands[1])) {     //Check herbivores for all animals
-            elsa.eatLeaves();
-            dora.eatLeaves();
-            marty.eatLeaves();
-            jeffrey.eatLeaves();
+            listOfHerbivores.forEach(Herbivore::eatLeaves);
 
         } else if (input.equals(commands[2])) {     //Check carnivores for all animals
-            henk.eatMeat();
-            dora.eatMeat();
-            wally.eatMeat();
-            berta.eatMeat();
-            jeffrey.eatMeat();
+            listOfCarnivores.forEach(Carnivore::eatMeat);
 
         } else if (input.equals(commands[3])) {     //Check tricks for all animals
-            dora.performTrick();
-            wally.performTrick();
-            berta.performTrick();
-            jeffrey.performTrick();
-
+            listOfAnimalTricks.forEach(Tricks::performTrick);
         } else {
             System.out.println("Unknown command: " + input);
         }

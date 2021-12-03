@@ -1,6 +1,6 @@
 package com.ing.zoo;
 
-public class Lion implements Animal {
+public class Lion implements Animal, Carnivore {
     public String name;
     public String helloText;
     public String eatText;
