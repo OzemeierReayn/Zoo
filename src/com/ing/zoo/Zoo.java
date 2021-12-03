@@ -5,7 +5,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Zoo {
-
+//
+//    static {
+//    }
+//    private static List<Animal> listOfAnimals = new ArrayList<>();
+//
 
     public static void main(String[] args) {
         List<Animal> listOfAnimals = new ArrayList<>();
@@ -40,30 +44,13 @@ public class Zoo {
 
         //Arraylist for animals, herbivores, carnivores and animals that can perform tricks
         listOfAnimals.add(henk);
-        listOfCarnivores.add(henk);
-
         listOfAnimals.add(elsa);
-        listOfHerbivores.add(elsa);
-
         listOfAnimals.add(dora);
-        listOfHerbivores.add(dora);
-        listOfCarnivores.add(dora);
-        listOfAnimalTricks.add(dora);
-
         listOfAnimals.add(marty);
-        listOfHerbivores.add(marty);
-
         listOfAnimals.add(wally);
-        listOfCarnivores.add(wally);
 
         listOfAnimals.add(jeffrey);
-        listOfCarnivores.add(jeffrey);
-        listOfHerbivores.add(jeffrey);
-        listOfAnimalTricks.add(jeffrey);
-
         listOfAnimals.add(berta);
-        listOfCarnivores.add(berta);
-        listOfAnimalTricks.add(berta);
 
         String input = scanner.nextLine();
 
