@@ -1,4 +1,4 @@
-package com.ing.zoo;
+package com.ing.zoo.animal;
 
 import java.util.Random;
 
@@ -37,5 +37,10 @@ public class Monkey implements Animal, Carnivore, Herbivore, Tricks {
             trickText = "Only if I'm given something in return";
         }
         System.out.println(trickText);
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

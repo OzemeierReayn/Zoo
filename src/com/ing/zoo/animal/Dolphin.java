@@ -1,4 +1,4 @@
-package com.ing.zoo;
+package com.ing.zoo.animal;
 
 import java.util.Random;
 
@@ -34,5 +34,10 @@ public class Dolphin implements Animal, Carnivore, Tricks {
             trickText = "jump out of the water";
         }
         System.out.println(trickText);
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

@@ -1,4 +1,4 @@
-package com.ing.zoo;
+package com.ing.zoo.animal;
 
 public class Hippo implements Animal, Herbivore {
     public String name;
@@ -16,6 +16,11 @@ public class Hippo implements Animal, Herbivore {
     public void eatLeaves() {
         eatText = "munch munch lovely";
         System.out.println(eatText);
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 
 }

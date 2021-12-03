@@ -1,4 +1,4 @@
-package com.ing.zoo;
+package com.ing.zoo.animal;
 
 import java.util.Random;
 
@@ -11,9 +11,9 @@ public class Pig implements Animal, Tricks, Carnivore, Herbivore {
     public Pig() {
     }
 
-    public void sayHello() {
-        helloText = "splash";
-        System.out.println(helloText);
+    @Override
+    public String getHelloMessage() {
+        return "splash mud";
     }
 
     public void eatLeaves() {
@@ -35,5 +35,10 @@ public class Pig implements Animal, Tricks, Carnivore, Herbivore {
             trick = "runs in circles";
         }
         System.out.println(trick);
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }

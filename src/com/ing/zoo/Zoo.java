@@ -1,28 +1,19 @@
 package com.ing.zoo;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import com.ing.zoo.animal.*;
+import com.ing.zoo.command.Command;
+import com.ing.zoo.command.EatCommand;
+import com.ing.zoo.command.HelloCommand;
+import com.ing.zoo.command.TricksCommand;
+
+import java.util.*;
 
 public class Zoo {
-//
-//    static {
-//    }
-//    private static List<Animal> listOfAnimals = new ArrayList<>();
-//
+    public static List<Animal> listOfAnimals = new ArrayList<>();
+    private static List<Command> listOfCommands = new ArrayList<>();
 
-    public static void main(String[] args) {
-        List<Animal> listOfAnimals = new ArrayList<>();
-        List<Herbivore> listOfHerbivores = new ArrayList<>();
-        List<Carnivore> listOfCarnivores = new ArrayList<>();
-        List<Tricks> listOfAnimalTricks = new ArrayList<>();
-
-        String[] commands = new String[4];
-        commands[0] = "hello";
-        commands[1] = "give leaves";
-        commands[2] = "give meat";
-        commands[3] = "perform trick";
-
+    static {
+        //Animals
         Lion henk = new Lion();
         henk.name = "henk";
         Hippo elsa = new Hippo();
@@ -34,13 +25,16 @@ public class Zoo {
         Zebra marty = new Zebra();
         marty.name = "marty";
 
-        Monkey jeffrey = new Monkey();
-        jeffrey.name = "jeffrey";
+        Monkey fitzgerald = new Monkey();
+        fitzgerald.name = "fitzgerald";
         Dolphin berta = new Dolphin();
         berta.name = "berta";
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Voer uw command in: ");
+        //Commands
+        listOfCommands.add(new HelloCommand());
+        listOfCommands.add(new EatCommand());
+        listOfCommands.add(new TricksCommand());
+
 
         //Arraylist for animals, herbivores, carnivores and animals that can perform tricks
         listOfAnimals.add(henk);
@@ -49,40 +43,73 @@ public class Zoo {
         listOfAnimals.add(marty);
         listOfAnimals.add(wally);
 
-        listOfAnimals.add(jeffrey);
+        listOfAnimals.add(fitzgerald);
         listOfAnimals.add(berta);
+    }
+
+    public static void main(String[] args) {
+//        String[] commands = new String[4];
+//        commands[0] = "hello";
+//        commands[1] = "give leaves";
+//        commands[2] = "give meat";
+//        commands[3] = "perform trick";
+
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Voer uw command in: ");
 
         String input = scanner.nextLine();
+        String[] parts = input.split(" ");
 
-        if (input.equals(commands[0])) {        //Check for hello all animals
-            listOfAnimals.forEach(Animal::sayHello);
-        } else if (input.equals(commands[0] + " henk")) {
-            henk.sayHello();
-        } else if (input.equals(commands[0] + " elsa")) {
-            elsa.sayHello();
-        } else if (input.equals(commands[0] + " dora")) {
-            dora.sayHello();
-        } else if (input.equals(commands[0] + " wally")) {
-            wally.sayHello();
-        } else if (input.equals(commands[0] + " marty")) {
-            marty.sayHello();
-        } else if (input.equals(commands[0] + " berta")) {
-            berta.sayHello();
-        } else if (input.equals(commands[0] + " jeffrey")) {
-            jeffrey.sayHello();
-
-        } else if (input.equals(commands[1])) {     //Check herbivores for all animals
-            listOfHerbivores.forEach(Herbivore::eatLeaves);
-
-        } else if (input.equals(commands[2])) {     //Check carnivores for all animals
-            listOfCarnivores.forEach(Carnivore::eatMeat);
-
-        } else if (input.equals(commands[3])) {     //Check tricks for all animals
-            listOfAnimalTricks.forEach(Tricks::performTrick);
-
-        } else {
-            System.out.println("Unknown command: " + input);
+        if (parts.length == 0) {
+            System.out.println("No input received. Application will self-destruct sooner than you think...?");
+            return;
         }
+
+        Optional<Command> commandOptional = listOfCommands
+                .stream()
+                .filter(command -> command.getName().equalsIgnoreCase(parts[0]))
+                .findFirst();
+
+        if (!commandOptional.isPresent()) {
+            System.out.println("Unknown command [hello, give leaves, give meat, perform trick]");
+            return;
+        }
+
+        //Execute commands based on user input
+        commandOptional.get().execute(Arrays.copyOfRange(parts, 1, parts.length));
+
+
+//        if (input.equals(commands[0])) {        //Check for hello all animals
+//            listOfAnimals.forEach(Animal::sayHello);
+//        } else if (input.equals(commands[0] + " henk")) {
+//            henk.sayHello();
+//        } else if (input.equals(commands[0] + " elsa")) {
+//            elsa.sayHello();
+//        } else if (input.equals(commands[0] + " dora")) {
+//            dora.sayHello();
+//        } else if (input.equals(commands[0] + " wally")) {
+//            wally.sayHello();
+//        } else if (input.equals(commands[0] + " marty")) {
+//            marty.sayHello();
+//        } else if (input.equals(commands[0] + " berta")) {
+//            berta.sayHello();
+//        } else if (input.equals(commands[0] + " fitzgerald")) {
+//            fitzgerald.sayHello();
+//
+//        } else if (input.equals(commands[1])) {     //Check herbivores for all animals
+//            listOfHerbivores.forEach(Herbivore::eatLeaves);
+//
+//        } else if (input.equals(commands[2])) {     //Check carnivores for all animals
+//            listOfCarnivores.forEach(Carnivore::eatMeat);
+//
+//        } else if (input.equals(commands[3])) {     //Check tricks for all animals
+//            listOfAnimalTricks.forEach(Tricks::performTrick);
+//
+//        } else {
+//            System.out.println("Unknown command: " + input);
+//        }
+//    }
     }
 }
 
