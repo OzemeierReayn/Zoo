@@ -30,10 +30,10 @@ public class Zoo {
         Zebra marty = new Zebra();
         marty.name = "marty";
 
-        Dolphin berta = new Dolphin();
-        berta.name = "berta";
         Monkey jeffrey = new Monkey();
         jeffrey.name = "jeffrey";
+        Dolphin berta = new Dolphin();
+        berta.name = "berta";
 
         Scanner scanner = new Scanner(System.in);
         System.out.print("Voer uw command in: ");
@@ -56,17 +56,16 @@ public class Zoo {
         listOfAnimals.add(wally);
         listOfCarnivores.add(wally);
 
+        listOfAnimals.add(jeffrey);
+        listOfCarnivores.add(jeffrey);
+        listOfHerbivores.add(jeffrey);
+        listOfAnimalTricks.add(jeffrey);
+
         listOfAnimals.add(berta);
         listOfCarnivores.add(berta);
         listOfAnimalTricks.add(berta);
 
-        listOfAnimals.add(jeffrey);
-        listOfHerbivores.add(jeffrey);
-        listOfCarnivores.add(jeffrey);
-        listOfAnimalTricks.add(jeffrey);
-
         String input = scanner.nextLine();
-
 
         if (input.equals(commands[0])) {        //Check for hello all animals
             listOfAnimals.forEach(Animal::sayHello);
@@ -93,6 +92,7 @@ public class Zoo {
 
         } else if (input.equals(commands[3])) {     //Check tricks for all animals
             listOfAnimalTricks.forEach(Tricks::performTrick);
+
         } else {
             System.out.println("Unknown command: " + input);
         }
